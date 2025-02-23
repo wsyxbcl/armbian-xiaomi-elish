@@ -31,15 +31,15 @@ jobs:
     needs: prepare_release
     strategy:
       matrix:
-        BOARD: [xiaomi-elish, oneplus-kebab]
+        BOARD: [xiaomi-elish]
         DISTRO: [armbian]
-        FLAVOR: [ubuntu]
+        FLAVOR: [debian]
         BRANCH: [current]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Upload Armbian image
-        uses: amazingfate/armbian-compile-action@main
+        uses: wsyxbcl/armbian-compile-action@main
         if: matrix.DISTRO == 'armbian'
         with:
           branch: ${{ matrix.BRANCH }}
